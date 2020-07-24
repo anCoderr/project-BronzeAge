@@ -1,0 +1,35 @@
+<resources>
+
+    <string name="app_name">Quiz App</string>
+    <string name="prev_ques">Previous\nQuestion</string>
+    <string name="next_ques">Next\nQuestion</string>
+    <string name="ans_true">true</string>
+    <string name="ans_false">false</string>
+    <string name="reset_question">Reset Question</string>
+    <string name="reset_quiz">Reset Quiz</string>
+    <string name="right_counter">Right:\n</string>
+    <string name="wrong_counter">Wrong:\n</string>
+
+    <string name="q1">Beavers can hold their breath for 45 minutes under water ?</string>
+    <string name="q2">Camels have two eyelids ?</string>
+    <string name="q3">A queen bee can lay 800 to 1500 eggs per day ?</string>
+    <string name="q4">Mosquitoes are not attracted to people who just ate bananas ?</string>
+    <string name="q5">A hummingbird weighs less than a penny ?</string>
+    <string name="q6">A jellyfish is approximately 95% water ?</string>
+    <string name="q7">Children tend to grow slower in the spring ?</string>
+    <string name="q8">Broccoli is the only vegetable that is also a flower ?</string>
+    <string name="q9">An ant\'s sense of smell is weaker than a dog\'s ?</string>
+    <string name="q10">There are 64,360 inches in a mile ?</string>
+
+    <string name="a1">true</string>
+    <string name="a2">false</string>
+    <string name="a3">true</string>
+    <string name="a4">false</string>
+    <string name="a5">true</string>
+    <string name="a6">true</string>
+    <string name="a7">false</string>
+    <string name="a8">true</string>
+    <string name="a9">false</string>
+    <string name="a10">false</string>
+
+</resources>
