@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Finger Speed Game</string>
+    <string name="taptap">TapTap !</string>
+    <string name="initial_time_left">60 \nseconds left</string>
+    <string name="initial_taps_left">1000 \ntaps left</string>
+    <string name="seconds_left"> seconds left</string>
+    <string name="taps_left"> taps left</string>
+    <string name="alert_title">The Game Is Finished!\nWould you like to reset the game, eh Sucker?</string>
+    <string name="alert_message">Well Done Sucker!</string>
+
+</resources>
