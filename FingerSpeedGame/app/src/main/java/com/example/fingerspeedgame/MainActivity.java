@@ -12,6 +12,7 @@ import android.os.Process;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -141,6 +142,14 @@ public class MainActivity extends AppCompatActivity {
         countDownTimer.cancel();
     }
 
+    // setToast method for setting up toasts for debugging
+
+    public void showToastMessage (String message) {
+
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+    }
+
     ////////////////////////////////////////////////////////////////////// Driver Code //////////////////////////////////////////////////////////////////////
 
     @Override
@@ -173,8 +182,10 @@ public class MainActivity extends AppCompatActivity {
         });
         if(savedInstanceState != null){
             resetTheGame(savedInstanceState.getInt(REMAINING_TIME_KEY),savedInstanceState.getInt(TAPS_LEFT_KEY) );
+            showToastMessage("resetting with saved variables");
         } else {
             resetTheGame();
+            showToastMessage("resetting with stock variables");
         }
     }
 }
