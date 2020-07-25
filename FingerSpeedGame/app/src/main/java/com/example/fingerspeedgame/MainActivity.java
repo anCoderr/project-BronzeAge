@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Process;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -64,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         timeIntervalInMillis = 1000;
         remainingTime = timeRemaining;
         tapsLeft = tapsRemaining;
-        timerTextView.setText(remainingTime + '\n' + getString(R.string.initial_time_left));
-        tapCountdownTextView.setText(tapsLeft + '\n' + getString(R.string.taps_left));
+        timerTextView.setText(remainingTime + "\n" + getString(R.string.initial_time_left));
+        tapCountdownTextView.setText(tapsLeft + "\n" + getString(R.string.taps_left));
 
         if(countDownTimer != null){
 
