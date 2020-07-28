@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CategoryRecyclerAdapter extends RecyclerView.Adapter <CategoryViewHolder> {
 
     String[] categories = {"Hobbies", "Sports", "Games", "Gadgets", "Foods", "Countries"};
-
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
