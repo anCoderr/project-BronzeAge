@@ -1,6 +1,8 @@
 package com.example.favlistapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.icu.util.ULocale;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,11 +24,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CategoryRecyclerAdapter.CategoryIsClickedInterface {
 
     private RecyclerView categoryRecyclerView;
     private FloatingActionButton fab;
     private CategoryManager mCategoryManager = new CategoryManager(this);
+
+    public static final String CATEGORY_ITEMS_KEY = "Category Items Key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         categoryRecyclerView = findViewById(R.id.category_recyclerView);
         fab = findViewById(R.id.fab);
 
-        categoryRecyclerView.setAdapter(new CategoryRecyclerAdapter(categories));
+        categoryRecyclerView.setAdapter(new CategoryRecyclerAdapter(categories, this));
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +99,29 @@ public class MainActivity extends AppCompatActivity {
                 categoryRecyclerAdapter.addCategory(category);
 
                 dialogInterface.dismiss();
+
+                displayCategoryItems(category);
             }
         });
 
         alertBuilder.create().show();
+    }
+
+    private void displayCategoryItems (Category category) {
+
+        Intent categoryItemsIntent = new Intent(this, CategoryItemsActivity.class);
+        categoryItemsIntent.putExtra(CATEGORY_ITEMS_KEY, category);
+
+        startActivity(categoryItemsIntent);
+
+
+
+
+    }
+
+    @Override
+    public void categoryIsClicked(Category category) {
+        displayCategoryItems(category);
     }
 
 }

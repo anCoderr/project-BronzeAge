@@ -9,12 +9,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+
+
 public class CategoryRecyclerAdapter extends RecyclerView.Adapter <CategoryViewHolder> {
 
-    private ArrayList<Category> categories;
+    interface CategoryIsClickedInterface {
 
-    public CategoryRecyclerAdapter(ArrayList<Category> categories) {
+        void categoryIsClicked(Category category);
+
+    }
+
+    private ArrayList<Category> categories;
+    private CategoryIsClickedInterface categoryIsClickedInterface ;
+
+    public CategoryRecyclerAdapter(ArrayList<Category> categories, CategoryIsClickedInterface categoryIsClickedInterface) {
         this.categories = categories;
+        this.categoryIsClickedInterface = categoryIsClickedInterface;
     }
 
     @NonNull
@@ -28,10 +38,17 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter <CategoryViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
 
         holder.getTxtCategoryNumber().setText(Integer.toString(position+1)+".");
         holder.getTxtCategoryName().setText(categories.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                categoryIsClickedInterface.categoryIsClicked(categories.get(position));
+            }
+        });
 
     }
 
