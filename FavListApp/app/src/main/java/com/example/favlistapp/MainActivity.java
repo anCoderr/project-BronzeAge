@@ -1,5 +1,6 @@
 package com.example.favlistapp;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.ULocale;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements CategoryRecyclerA
     private CategoryManager mCategoryManager = new CategoryManager(this);
 
     public static final String CATEGORY_ITEMS_KEY = "Category Items Key";
+    public static final int MAIN_ACTIVITY_REQUEST_CODE = 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements CategoryRecyclerA
         Intent categoryItemsIntent = new Intent(this, CategoryItemsActivity.class);
         categoryItemsIntent.putExtra(CATEGORY_ITEMS_KEY, category);
 
-        startActivity(categoryItemsIntent);
+        startActivityForResult(categoryItemsIntent, MAIN_ACTIVITY_REQUEST_CODE);
 
 
 
@@ -124,4 +128,27 @@ public class MainActivity extends AppCompatActivity implements CategoryRecyclerA
         displayCategoryItems(category);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == MAIN_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            if(data != null) {
+
+                mCategoryManager.saveCategory((Category)data.getSerializableExtra(CATEGORY_ITEMS_KEY));
+                updateCategories();
+
+            }
+
+        };
+
+    }
+
+    private void updateCategories() {
+
+        ArrayList<Category> categories = mCategoryManager.retrieveCategories();
+        categoryRecyclerView.setAdapter(new CategoryRecyclerAdapter(categories, this));
+
+    }
 }
